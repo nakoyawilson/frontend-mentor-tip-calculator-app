@@ -6,7 +6,7 @@ const Input = (props) => {
       <span className="input-icon">
         <img src={props.icon} alt="" />
       </span>
-      <input type="text" />
+      <input type="text" value="0" />
     </div>
   );
 };

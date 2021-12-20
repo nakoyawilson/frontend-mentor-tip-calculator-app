@@ -18,8 +18,140 @@
 }
 
 body {
+  background-color: var(--light-grayish-cyan-1);
   font-family: "Space Mono", monospace;
   font-size: 24px;
+  color: var(--dark-grayish-cyan-1);
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  padding-top: 5rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 58rem;
+}
+
+.user-input,
+.results {
+  width: 50%;
+}
+
+.bill,
+.tip-selection,
+.number-people {
+  padding: 1.25rem 0;
+}
+
+input {
+  background-color: var(--light-grayish-cyan-2);
+  color: var(--dark-grayish-cyan-2);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  text-align: right;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 0.5rem;
+  width: 85%;
+}
+
+.form-input {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.set-amount {
+  background-color: var(--dark-cyan);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 7rem;
+  padding: 0.5rem;
+  font-weight: 700;
+}
+
+.custom-amount {
+  width: 7rem;
+}
+
+.results {
+  background-color: var(--dark-cyan);
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25.5rem;
+}
+
+.tip-amount,
+.total-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.results-subtitle {
+  color: var(--color-white);
+}
+
+.per-person {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--dark-grayish-cyan-1);
+}
+
+.calculated-results {
+  color: var(--strong-cyan);
+  font-size: 3rem;
+}
+
+.disabled-button {
+  background-color: var(--dark-grayish-cyan-2);
+  color: var(--dark-cyan);
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.5rem;
 }
 
 /* Footer Section */
@@ -28,5 +160,10 @@ body {
   text-align: center;
 }
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: var(--dark-cyan);
+}
+
+.attribution a:hover {
+  color: var(--strong-cyan);
+  text-decoration: none;
 }

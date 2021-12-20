@@ -12,7 +12,8 @@ const Footer = () => {
         >
           Frontend Mentor
         </a>
-        . Coded by <a href="https://nakoyawilson.netlify.app/">Nakoya</a>.
+        . Coded by <a href="https://nakoyawilson.netlify.app/">Nakoya Wilson</a>
+        .
       </p>
     </footer>
   );
