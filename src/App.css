@@ -63,7 +63,7 @@ main {
 
 input {
   background-color: var(--light-grayish-cyan-2);
-  color: var(--dark-grayish-cyan-2);
+  color: var(--dark-cyan);
   font-family: inherit;
   font-size: inherit;
   font-weight: 700;
@@ -71,8 +71,24 @@ input {
   border: none;
   border-radius: 5px;
   outline: none;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   width: 85%;
+}
+
+/* Hide arrows on number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+::placeholder {
+  color: var(--dark-grayish-cyan-2);
 }
 
 .form-input {
@@ -81,7 +97,7 @@ input {
 
 .input-icon {
   position: absolute;
-  left: 0.75rem;
+  left: 1rem;
   top: 0.5rem;
 }
 
@@ -102,15 +118,26 @@ input {
   width: 7rem;
   padding: 0.5rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .custom-amount {
   width: 7rem;
+  color: var(--dark-grayish-cyan-1);
+  cursor: pointer;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.enabled-button {
+  background-color: var(--strong-cyan);
+  color: var(--dark-cyan);
+  cursor: pointer;
 }
 
 .results {
   background-color: var(--dark-cyan);
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -139,13 +166,15 @@ input {
 .calculated-results {
   color: var(--strong-cyan);
   font-size: 3rem;
+  font-weight: 700;
 }
 
 .disabled-button {
-  background-color: var(--dark-grayish-cyan-2);
+  background-color: hsla(172, 67%, 45%, 0.35);
   color: var(--dark-cyan);
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
   text-transform: uppercase;
   border: none;
   outline: none;

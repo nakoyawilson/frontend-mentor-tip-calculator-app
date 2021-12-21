@@ -6,7 +6,12 @@ const Input = (props) => {
       <span className="input-icon">
         <img src={props.icon} alt="" />
       </span>
-      <input type="text" value="0" />
+      <input
+        id={props.inputID}
+        type="number"
+        placeholder="0"
+        onChange={props.calculateFunction}
+      />
     </div>
   );
 };

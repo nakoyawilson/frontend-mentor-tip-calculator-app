@@ -4,27 +4,109 @@ import Button from "./Button";
 import CustomInput from "./CustomInput";
 
 const Calculator = () => {
+  const selectTip = () => {
+    const amountButtons = document.querySelectorAll(".amount");
+    amountButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        button.classList.add("enabled-button");
+      });
+    });
+  };
+
+  const calculateTip = () => {
+    const billAmount = Number(document.querySelector("#bill").value);
+    const numberPeople = Number(document.querySelector("#num-people").value);
+    const tipDisplay = document.querySelector("#tip-display");
+    const totalDisplay = document.querySelector("#total-display");
+    let percentage;
+    const amountButtons = document.querySelectorAll(".amount");
+    amountButtons.forEach((button) => {
+      if (button.classList.contains("enabled-button")) {
+        percentage = button.value;
+      }
+    });
+    const resetButton = document.querySelector(".reset-button");
+    resetButton.classList.add("enabled-button");
+    const tip = (billAmount * percentage) / numberPeople;
+    const total = (billAmount + billAmount * percentage) / numberPeople;
+    tipDisplay.innerHTML = tip.toFixed(2);
+    totalDisplay.innerHTML = total.toFixed(2);
+  };
+
+  const resetCalculator = () => {
+    const billAmount = document.querySelector("#bill");
+    const numberPeople = document.querySelector("#num-people");
+    const tipDisplay = document.querySelector("#tip-display");
+    const totalDisplay = document.querySelector("#total-display");
+    const amountButtons = document.querySelectorAll(".amount");
+    amountButtons.forEach((button) => {
+      button.classList.remove("enabled-button");
+    });
+    const tip = 0;
+    const total = 0;
+    billAmount.value = "";
+    numberPeople.value = "";
+    tipDisplay.innerHTML = tip.toFixed(2);
+    totalDisplay.innerHTML = total.toFixed(2);
+  };
+
   return (
     <main>
       <div className="user-input">
         <section className="bill">
           <h2>Bill</h2>
-          <Input icon="/assets/images/icon-dollar.svg" />
+          <Input
+            icon="/assets/images/icon-dollar.svg"
+            calculateFunction={calculateTip}
+            inputID="bill"
+          />
         </section>
         <section className="tip-selection">
           <h2>Select Tip %</h2>
           <div className="buttons">
-            <Button btnValue="5%" buttonClass="set-amount" />
-            <Button btnValue="10%" buttonClass="set-amount" />
-            <Button btnValue="15%" buttonClass="set-amount" />
-            <Button btnValue="25%" buttonClass="set-amount" />
-            <Button btnValue="50%" buttonClass="set-amount" />
-            <CustomInput inputValue="Custom" inputClass="custom-amount" />
+            <Button
+              btnName="5%"
+              btnValue="0.05"
+              buttonClass="set-amount amount"
+              clickFunction={selectTip}
+            />
+            <Button
+              btnName="10%"
+              btnValue="0.1"
+              buttonClass="set-amount amount"
+              clickFunction={selectTip}
+            />
+            <Button
+              btnName="15%"
+              btnValue="0.15"
+              buttonClass="set-amount amount"
+              clickFunction={selectTip}
+            />
+            <Button
+              btnName="25%"
+              btnValue="0.25"
+              buttonClass="set-amount amount"
+              clickFunction={selectTip}
+            />
+            <Button
+              btnName="50%"
+              btnValue="0.5"
+              buttonClass="set-amount amount"
+              clickFunction={selectTip}
+            />
+            <CustomInput
+              inputValue="Custom"
+              inputClass="custom-amount amount"
+            />
           </div>
         </section>
         <section className="number-people">
           <h2>Number of People</h2>
-          <Input icon="/assets/images/icon-person.svg" />
+          <Input
+            icon="/assets/images/icon-person.svg"
+            calculateFunction={calculateTip}
+            inputID="num-people"
+          />
         </section>
       </div>
       <div className="results">
@@ -36,7 +118,9 @@ const Calculator = () => {
               </h2>
             </div>
             <div className="total">
-              <p className="calculated-results">$0.00</p>
+              <p className="calculated-results">
+                $<span id="tip-display">0.00</span>
+              </p>
             </div>
           </section>
           <section className="total-amount">
@@ -46,12 +130,19 @@ const Calculator = () => {
               </h2>
             </div>
             <div className="total">
-              <p className="calculated-results">$0.00</p>
+              <p id="" className="calculated-results">
+                $<span id="total-display">0.00</span>
+              </p>
             </div>
           </section>
         </div>
         <div className="reset">
-          <Button btnValue="Reset" buttonClass="disabled-button" />
+          <Button
+            btnValue="Reset"
+            buttonClass="disabled-button reset-button"
+            btnName="Reset"
+            clickFunction={resetCalculator}
+          />
         </div>
       </div>
     </main>
