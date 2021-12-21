@@ -29,8 +29,15 @@ const Calculator = () => {
     resetButton.classList.add("enabled-button");
     const tip = (billAmount * percentage) / numberPeople;
     const total = (billAmount + billAmount * percentage) / numberPeople;
-    tipDisplay.innerHTML = tip.toFixed(2);
-    totalDisplay.innerHTML = total.toFixed(2);
+    if (!isFinite(tip) || isNaN(tip)) {
+      tipDisplay.innerHTML = "0.00";
+      totalDisplay.innerHTML = "0.00";
+    } else {
+      tipDisplay.innerHTML = tip.toFixed(2);
+      totalDisplay.innerHTML = total.toFixed(2);
+    }
+    console.log(typeof tip);
+    console.log(typeof total);
   };
 
   const resetCalculator = () => {
