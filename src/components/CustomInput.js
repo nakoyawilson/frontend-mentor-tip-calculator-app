@@ -2,7 +2,7 @@ import React from "react";
 
 const CustomInput = (props) => {
   return (
-    <div>
+    <div className={props.divClass}>
       <input
         type="text"
         className={props.inputClass}

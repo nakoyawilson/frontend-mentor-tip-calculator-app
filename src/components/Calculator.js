@@ -69,34 +69,40 @@ const Calculator = () => {
               btnValue="0.05"
               buttonClass="set-amount amount"
               clickFunction={selectTip}
+              divClass="tip-button"
             />
             <Button
               btnName="10%"
               btnValue="0.1"
               buttonClass="set-amount amount"
               clickFunction={selectTip}
+              divClass="tip-button"
             />
             <Button
               btnName="15%"
               btnValue="0.15"
               buttonClass="set-amount amount"
               clickFunction={selectTip}
+              divClass="tip-button"
             />
             <Button
               btnName="25%"
               btnValue="0.25"
               buttonClass="set-amount amount"
               clickFunction={selectTip}
+              divClass="tip-button"
             />
             <Button
               btnName="50%"
               btnValue="0.5"
               buttonClass="set-amount amount"
               clickFunction={selectTip}
+              divClass="tip-button"
             />
             <CustomInput
               inputValue="Custom"
               inputClass="custom-amount amount"
+              divClass="tip-button"
             />
           </div>
         </section>
@@ -136,14 +142,13 @@ const Calculator = () => {
             </div>
           </section>
         </div>
-        <div className="reset">
-          <Button
-            btnValue="Reset"
-            buttonClass="disabled-button reset-button"
-            btnName="Reset"
-            clickFunction={resetCalculator}
-          />
-        </div>
+        <Button
+          btnValue="Reset"
+          buttonClass="disabled-button reset-button"
+          btnName="Reset"
+          clickFunction={resetCalculator}
+          divClass="reset"
+        />
       </div>
     </main>
   );

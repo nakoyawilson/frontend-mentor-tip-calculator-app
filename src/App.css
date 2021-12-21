@@ -196,3 +196,69 @@ input[type="number"] {
   color: var(--strong-cyan);
   text-decoration: none;
 }
+
+/* Media Queries */
+@media screen and (max-width: 950px) {
+  main {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+  }
+
+  footer {
+    background-color: var(--color-white);
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  header {
+    padding: 2rem;
+  }
+
+  .set-amount,
+  .custom-amount {
+    width: 100%;
+  }
+
+  .tip-button {
+    width: 45%;
+  }
+
+  .calculated-results {
+    font-size: 2.5rem;
+  }
+
+  .results {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .user-input,
+  .results {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .user-input,
+  .results {
+    width: 100%;
+  }
+
+  .calculated-results {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    padding: 1.5rem;
+  }
+  .calculated-results {
+    font-size: 1.5rem;
+  }
+}
