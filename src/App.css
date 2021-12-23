@@ -48,6 +48,7 @@ main {
   padding: 2.5rem;
   border-radius: 20px;
   width: 58rem;
+  box-shadow: 0.5rem 1rem 1rem hsla(183, 100%, 15%, 0.175);
 }
 
 .user-input,
@@ -260,5 +261,14 @@ input[type="number"] {
   }
   .calculated-results {
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .tip-amount,
+  .total-amount {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 }
