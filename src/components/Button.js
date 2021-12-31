@@ -3,13 +3,15 @@ import React from "react";
 const Button = (props) => {
   return (
     <div className={props.divClass}>
-      <button
-        className={props.buttonClass}
+      <input
+        type="radio"
+        id={props.btnID}
+        name="tipValue"
         value={props.btnValue}
-        onClick={props.clickFunction}
-      >
+      />
+      <label htmlFor={props.btnID} className={props.buttonClass}>
         {props.btnName}
-      </button>
+      </label>
     </div>
   );
 };

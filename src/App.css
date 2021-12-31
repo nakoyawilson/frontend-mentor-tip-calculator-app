@@ -108,6 +108,14 @@ input[type="number"] {
   gap: 0.75rem;
 }
 
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+}
+
 .set-amount {
   background-color: var(--dark-cyan);
   color: var(--color-white);
@@ -116,10 +124,11 @@ input[type="number"] {
   border: none;
   outline: none;
   border-radius: 5px;
-  width: 7rem;
   padding: 0.5rem;
   font-weight: 700;
   cursor: pointer;
+  width: 7rem;
+  text-align: center;
 }
 
 .custom-amount {
@@ -130,6 +139,7 @@ input[type="number"] {
   text-align: center;
 }
 
+input[type="radio"]:checked + label,
 .enabled-button {
   background-color: var(--strong-cyan);
   color: var(--dark-cyan);
@@ -200,6 +210,10 @@ input[type="number"] {
 
 /* Media Queries */
 @media screen and (max-width: 950px) {
+  .app {
+    min-height: auto;
+  }
+
   main {
     flex-direction: column;
     width: 100%;
@@ -234,6 +248,10 @@ input[type="number"] {
 
   .results {
     height: auto;
+  }
+
+  .buttons {
+    justify-content: space-between;
   }
 }
 

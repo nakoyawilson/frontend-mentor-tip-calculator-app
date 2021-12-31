@@ -7,8 +7,14 @@ const Calculator = () => {
   const selectTip = () => {
     const amountButtons = document.querySelectorAll(".amount");
     amountButtons.forEach((button) => {
+      console.log(button);
       button.addEventListener("click", () => {
-        button.classList.add("enabled-button");
+        console.log(button.classList);
+        // if (button.classList.contains("custom-amount amount")) {
+        //   // button.disabled = false;
+        //   alert("clicked");
+        // }
+        // button.classList.add("enabled-button");
       });
     });
   };
@@ -77,6 +83,7 @@ const Calculator = () => {
               buttonClass="set-amount amount"
               clickFunction={selectTip}
               divClass="tip-button"
+              btnID="five"
             />
             <Button
               btnName="10%"
@@ -84,6 +91,7 @@ const Calculator = () => {
               buttonClass="set-amount amount"
               clickFunction={selectTip}
               divClass="tip-button"
+              btnID="ten"
             />
             <Button
               btnName="15%"
@@ -91,6 +99,7 @@ const Calculator = () => {
               buttonClass="set-amount amount"
               clickFunction={selectTip}
               divClass="tip-button"
+              btnID="fifteen"
             />
             <Button
               btnName="25%"
@@ -98,6 +107,7 @@ const Calculator = () => {
               buttonClass="set-amount amount"
               clickFunction={selectTip}
               divClass="tip-button"
+              btnID="twenty-five"
             />
             <Button
               btnName="50%"
@@ -105,6 +115,7 @@ const Calculator = () => {
               buttonClass="set-amount amount"
               clickFunction={selectTip}
               divClass="tip-button"
+              btnID="fifty"
             />
             <CustomInput
               inputValue="Custom"
