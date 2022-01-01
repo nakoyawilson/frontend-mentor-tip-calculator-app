@@ -50,7 +50,7 @@ main {
   background-color: var(--color-white);
   padding: 1rem 2.5rem;
   border-radius: 20px;
-  width: 58rem;
+  width: min(90%, 58rem);
   box-shadow: 0.5rem 1rem 1rem hsla(183, 100%, 15%, 0.175);
 }
 
@@ -309,6 +309,15 @@ input[type="number"].input-error:focus {
   .buttons {
     justify-content: space-between;
   }
+
+  .heading-error {
+    flex-direction: column;
+    padding-right: 0.1rem;
+  }
+
+  .error {
+    text-align: right;
+  }
 }
 
 @media screen and (max-width: 750px) {
@@ -338,7 +347,7 @@ input[type="number"].input-error:focus {
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 310px) {
   .tip-amount,
   .total-amount {
     flex-direction: column;
