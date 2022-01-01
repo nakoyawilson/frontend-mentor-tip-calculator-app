@@ -225,7 +225,7 @@ const Calculator = () => {
               </h2>
             </div>
             <div className="total">
-              <p id="" className="calculated-results">
+              <p className="calculated-results">
                 $<span id="total-display">{total}</span>
               </p>
             </div>
