@@ -3,10 +3,10 @@ import React from "react";
 const Header = () => {
   return (
     <header>
-      <h1 aria-label="Splitter Tip Calculator App">
+      <h1>
         <img
           src="/assets/images/logo.svg"
-          alt="Splitter logo"
+          alt="Splitter Tip Calculator App"
           className="logo"
         />
       </h1>
