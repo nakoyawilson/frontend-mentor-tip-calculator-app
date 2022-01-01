@@ -8,9 +8,10 @@ const Input = (props) => {
       </span>
       <input
         id={props.inputID}
+        name={props.inputName}
         type="number"
         placeholder="0"
-        onChange={props.calculateFunction}
+        onChange={props.handleChange}
       />
     </div>
   );

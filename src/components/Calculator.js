@@ -1,49 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import CustomInput from "./CustomInput";
+import Reset from "./Reset";
 
 const Calculator = () => {
-  const selectTip = () => {
-    const amountButtons = document.querySelectorAll(".amount");
-    amountButtons.forEach((button) => {
-      console.log(button);
-      button.addEventListener("click", () => {
-        console.log(button.classList);
-        // if (button.classList.contains("custom-amount amount")) {
-        //   // button.disabled = false;
-        //   alert("clicked");
-        // }
-        // button.classList.add("enabled-button");
-      });
-    });
+  const [percentage, setPercentage] = useState("");
+  const [billAmount, setBillAmount] = useState(0);
+  const [numberPeople, setNumberPeople] = useState(0);
+  const [tip, setTip] = useState("0.00");
+  const [total, setTotal] = useState("0.00");
+
+  const radioButtonChange = (event) => {
+    document.querySelector(".custom-amount.amount").value = "";
+    const { value } = event.target;
+    setPercentage(Number(value));
   };
 
-  const calculateTip = () => {
-    const billAmount = Number(document.querySelector("#bill").value);
-    const numberPeople = Number(document.querySelector("#num-people").value);
-    const tipDisplay = document.querySelector("#tip-display");
-    const totalDisplay = document.querySelector("#total-display");
-    let percentage;
-    const amountButtons = document.querySelectorAll(".amount");
-    amountButtons.forEach((button) => {
-      if (button.classList.contains("enabled-button")) {
-        percentage = button.value;
-      }
-    });
-    const resetButton = document.querySelector(".reset-button");
-    resetButton.classList.add("enabled-button");
-    const tip = (billAmount * percentage) / numberPeople;
-    const total = (billAmount + billAmount * percentage) / numberPeople;
-    if (!isFinite(tip) || isNaN(tip)) {
-      tipDisplay.innerHTML = "0.00";
-      totalDisplay.innerHTML = "0.00";
-    } else {
-      tipDisplay.innerHTML = tip.toFixed(2);
-      totalDisplay.innerHTML = total.toFixed(2);
+  const inputChange = (event) => {
+    const { value, id } = event.target;
+    if (id === "bill") {
+      setBillAmount(Number(value));
+    } else if (id === "num-people") {
+      setNumberPeople(Number(value));
     }
-    console.log(typeof tip);
-    console.log(typeof total);
+  };
+
+  const customInputChange = (event) => {
+    document.querySelectorAll('input[type="radio"]').forEach((ele) => {
+      ele.checked = false;
+    });
+    const { value } = event.target;
+    setPercentage(Number(value) / 100);
   };
 
   const resetCalculator = () => {
@@ -51,9 +39,8 @@ const Calculator = () => {
     const numberPeople = document.querySelector("#num-people");
     const tipDisplay = document.querySelector("#tip-display");
     const totalDisplay = document.querySelector("#total-display");
-    const amountButtons = document.querySelectorAll(".amount");
-    amountButtons.forEach((button) => {
-      button.classList.remove("enabled-button");
+    document.querySelectorAll('input[type="radio"]').forEach((ele) => {
+      ele.checked = false;
     });
     const tip = 0;
     const total = 0;
@@ -63,6 +50,18 @@ const Calculator = () => {
     totalDisplay.innerHTML = total.toFixed(2);
   };
 
+  useEffect(() => {
+    const tipAmount = (billAmount * percentage) / numberPeople;
+    const totalAmount = (billAmount * percentage + billAmount) / numberPeople;
+    if (!isFinite(tipAmount) || isNaN(tipAmount)) {
+      setTip("0.00");
+      setTotal("0.00");
+    } else {
+      setTip(tipAmount.toFixed(2));
+      setTotal(totalAmount.toFixed(2));
+    }
+  }, [percentage, billAmount, numberPeople, tip, total]);
+
   return (
     <main>
       <div className="user-input">
@@ -70,7 +69,7 @@ const Calculator = () => {
           <h2>Bill</h2>
           <Input
             icon="/assets/images/icon-dollar.svg"
-            calculateFunction={calculateTip}
+            handleChange={inputChange}
             inputID="bill"
           />
         </section>
@@ -81,46 +80,47 @@ const Calculator = () => {
               btnName="5%"
               btnValue="0.05"
               buttonClass="set-amount amount"
-              clickFunction={selectTip}
               divClass="tip-button"
               btnID="five"
+              handleChange={radioButtonChange}
             />
             <Button
               btnName="10%"
               btnValue="0.1"
               buttonClass="set-amount amount"
-              clickFunction={selectTip}
               divClass="tip-button"
               btnID="ten"
+              handleChange={radioButtonChange}
             />
             <Button
               btnName="15%"
               btnValue="0.15"
               buttonClass="set-amount amount"
-              clickFunction={selectTip}
               divClass="tip-button"
               btnID="fifteen"
+              handleChange={radioButtonChange}
             />
             <Button
               btnName="25%"
               btnValue="0.25"
               buttonClass="set-amount amount"
-              clickFunction={selectTip}
               divClass="tip-button"
               btnID="twenty-five"
+              handleChange={radioButtonChange}
             />
             <Button
               btnName="50%"
               btnValue="0.5"
               buttonClass="set-amount amount"
-              clickFunction={selectTip}
               divClass="tip-button"
               btnID="fifty"
+              handleChange={radioButtonChange}
             />
             <CustomInput
               inputValue="Custom"
               inputClass="custom-amount amount"
               divClass="tip-button"
+              handleChange={customInputChange}
             />
           </div>
         </section>
@@ -128,7 +128,7 @@ const Calculator = () => {
           <h2>Number of People</h2>
           <Input
             icon="/assets/images/icon-person.svg"
-            calculateFunction={calculateTip}
+            handleChange={inputChange}
             inputID="num-people"
           />
         </section>
@@ -143,7 +143,7 @@ const Calculator = () => {
             </div>
             <div className="total">
               <p className="calculated-results">
-                $<span id="tip-display">0.00</span>
+                $<span id="tip-display">{tip}</span>
               </p>
             </div>
           </section>
@@ -155,12 +155,12 @@ const Calculator = () => {
             </div>
             <div className="total">
               <p id="" className="calculated-results">
-                $<span id="total-display">0.00</span>
+                $<span id="total-display">{total}</span>
               </p>
             </div>
           </section>
         </div>
-        <Button
+        <Reset
           btnValue="Reset"
           buttonClass="disabled-button reset-button"
           btnName="Reset"

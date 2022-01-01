@@ -6,8 +6,10 @@ const CustomInput = (props) => {
       <input
         type="text"
         className={props.inputClass}
-        value={props.inputValue}
-        disabled
+        // value={props.inputValue}
+        placeholder={props.inputValue}
+        onChange={props.handleChange}
+        // disabled
       />
     </div>
   );
