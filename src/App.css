@@ -8,6 +8,8 @@
   --light-grayish-cyan-1: hsl(185, 41%, 84%);
   --light-grayish-cyan-2: hsl(189, 41%, 97%);
   --color-white: hsl(0, 0%, 100%);
+  --error: hsl(9, 48%, 61%);
+  --disabled: hsl(184, 45%, 29%);
 }
 
 /* CSS Reset */
@@ -26,6 +28,7 @@ body {
 
 h2 {
   font-size: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .app {
@@ -74,6 +77,12 @@ input {
   outline: none;
   padding: 0.5rem 1rem;
   width: 85%;
+  cursor: pointer;
+}
+
+input[type="number"]:focus {
+  border: 2px solid var(--strong-cyan);
+  caret-color: var(--strong-cyan);
 }
 
 /* Hide arrows on number input */
@@ -90,6 +99,7 @@ input[type="number"] {
 
 ::placeholder {
   color: var(--dark-grayish-cyan-2);
+  opacity: 1;
 }
 
 .form-input {
@@ -131,19 +141,33 @@ label {
   text-align: center;
 }
 
+.set-amount:hover,
+.custom-amount:hover {
+  background-color: hsla(172, 67%, 45%, 0.4);
+  color: var(--dark-cyan);
+}
+
 .custom-amount {
   width: 7rem;
-  color: var(--dark-grayish-cyan-1);
   cursor: pointer;
   padding: 0.5rem;
   text-align: center;
 }
 
-input[type="radio"]:checked + label,
-.enabled-button {
-  background-color: var(--strong-cyan);
-  color: var(--dark-cyan);
-  cursor: pointer;
+input[type="number"].custom-amount.amount::placeholder {
+  color: var(--dark-grayish-cyan-1);
+  opacity: 1;
+  text-align: center;
+}
+
+input[type="number"].custom-amount {
+  text-align: right;
+}
+
+.heading-error {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4rem;
 }
 
 .results {
@@ -180,8 +204,13 @@ input[type="radio"]:checked + label,
   font-weight: 700;
 }
 
+.reset {
+  background: var(--color-white);
+  border-radius: 7px;
+}
+
 .disabled-button {
-  background-color: hsla(172, 67%, 45%, 0.35);
+  background-color: var(--disabled);
   color: var(--dark-cyan);
   font-family: inherit;
   font-size: 1.25rem;
@@ -192,6 +221,33 @@ input[type="radio"]:checked + label,
   border-radius: 5px;
   width: 100%;
   padding: 0.5rem;
+}
+
+input[type="radio"]:checked + label,
+.enabled-button {
+  background-color: var(--strong-cyan);
+  color: var(--dark-cyan);
+  cursor: pointer;
+}
+
+.enabled-button:hover {
+  background-color: hsla(172, 67%, 45%, 0.4);
+}
+
+.error {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--error);
+  display: none;
+}
+
+.input-error,
+input[type="number"].input-error:focus {
+  border: 2px solid var(--error);
+}
+
+input[type="number"].input-error:focus {
+  caret-color: var(--error);
 }
 
 /* Footer Section */

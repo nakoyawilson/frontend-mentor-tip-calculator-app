@@ -1,12 +1,13 @@
-import React from "react";
+// import React from "react";
 
 const Reset = (props) => {
   return (
     <div className={props.divClass}>
       <button
         className={props.buttonClass}
-        value={props.btnValue}
         onClick={props.clickFunction}
+        id={props.btnID}
+        disabled={props.buttonState}
       >
         {props.btnName}
       </button>
