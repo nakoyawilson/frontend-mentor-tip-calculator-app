@@ -271,10 +271,15 @@ input[type="number"].input-error:focus {
     min-height: auto;
   }
 
+  header {
+    margin: 3rem 0 2.75rem;
+  }
+
   main {
     flex-direction: column;
     width: 100%;
     border-radius: 20px 20px 0 0;
+    margin-bottom: 0;
   }
 
   footer {
